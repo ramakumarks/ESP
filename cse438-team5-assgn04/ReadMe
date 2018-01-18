@@ -1,0 +1,144 @@
+CSE 438:Embedded System Programming 
+Assignment 4
+
+Team 5
+Rama Kumar Kana Sundara
+ASU ID:1213347614
+Sharath Renjit Naik
+ASU ID:1213340750
+
+Files in folder:
+
+ReadMe
+Report.pdf
+
+Sub folders:
+task1
+task2
+task3
+
+*****************************
+Task 1
+*****************************
+
+Steps to Execute
+-----------------------------
+
+1. Task 1 files are present in Task1 folder.
+2. Run the command 'chmod +x t1.sh' to make the script file executable
+3. Run the script file in the folder using the command 'sudo ./t1.sh'
+
+
+Files Present
+-----------------------------
+Makefile
+t1.sh
+task1.c
+
+`
+Expalanation
+-----------------------------
+This part of the assignment makes use of two threads. First thread is
+used to generate the signal by detecting double right click from the 
+mouse and second thread is used to do imprecise computation. The results
+of the computation is displayed as soon as duble click event is generated.
+For double click event, the thread waits for 500ms for second click
+otherwise it is detected as a first click. The MOUSE DEVICE path can
+be changed to the #define MICE_DEVICE "/dev/input/event4" to correct value
+as per the settings of the tester machine.
+
+*****************************
+Task 2
+*****************************
+
+Steps to Execute
+-----------------------------
+
+1. Task 2 files are present in Task2 folder.
+2. Navigate to subfolders for parts a,b and c
+3. Run the command 'chmod +x t2x.sh' where x is a,b,c for the sub tasks to make the scriptfile executable
+4. Run the script file in the sub folders using the command 'chmod ./t2x.sh' replacing x with a,b,c for the subfolders
+
+Files Present
+-----------------------------
+task2a:
+
+	Makefile
+	t2a.sh
+	task2a.c
+
+task2b:
+
+	Makefile
+	t2b.sh
+	task2b.c
+
+task2c:
+
+	Makefile
+	t2c.sh
+	task2c.c
+
+Expalination
+-----------------------------
+This part of the assingment is to test what the Linux’s signal facility does precisely 
+and to show the time that a signal handler associated to a thread gets executed in the following
+conditions:
+a. The thread is runnable (but not running, i.e. the running thread has a higher priority).
+b. The thread is blocked by a semaphore (i.e. sema_wait() is called).
+c. The thread is delayed (i.e., nanosleep() is called).
+
+
+******************************
+Task 3 Part 1
+******************************
+
+Steps to Execute
+-----------------------------
+1. Task 3 part 1 files are present in task3_1 folder inside task3.
+2. Navigate to subfolders
+3. Run the command 'chmomd +x t3_x.sh' where x is 1 or 2 depending on subfolder to make the scriptfile executable 
+4. Run the script file in the sub folders using the command 'chmod +x ./t3_x.sh' where x=1,2
+Files Present
+-----------------------------
+
+Makefile
+t3_1.sh
+task3_1.c
+
+Expalanation
+-----------------------------
+This part of the assignment makes use of multiple threads. These threads
+have a general common thread function to invoke. These threads are set to listen to 
+SIGIO from input device "/dev/input/mice". The signal generated is 
+delivered arbitrarily to any one the generated thread.
+The MOUSE DEVICE path can be changed to the #define MICE_DEVICE "/dev/input/mice"
+to correct value as per the settings of the tester machine.
+
+
+*****************************
+Task 3 Part 2
+*****************************
+Steps to Execute
+-----------------------------
+1. Task 3 part 2 files are present in task3_2 folder inside task3.
+2.Navigate to subfolders 
+2. Run the script file in the sub folders using the command ./t3_2.sh
+
+Files Present
+-----------------------------
+	Makefile
+	t3_2.sh
+	task3_2.c
+	task3_2.h
+	task3_2lib.c
+	task3_2lib.h
+
+Expalanation
+-----------------------------
+task3_2lib.h Library file is created that has a set of functions 
+such as register_my_thread, signal_handler, thread_capture_function that
+allows SIGIO signal being delivered to all threads that are registered 
+to receive the signal. The tester program creates the threads and calls
+the functions register_my_thread() to register and receive signals. If
+the thread is not registered, then it will not receive the signal.
